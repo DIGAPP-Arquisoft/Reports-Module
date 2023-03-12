@@ -1,5 +1,8 @@
 package com.reports.backend.services;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,24 +28,55 @@ public class ReportsService {
         return reportsConverter.toData(reportsRepository.findAll());
     }
 
+    // List report by ID
+    public ReportsData findById(int ReportId) {
+        Optional<Reports> report = reportsRepository.findById(ReportId);
+        if (report.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The report doesn't exists");
+        }
+        return reportsConverter.toData(report.get());
+    }
+
     // List reports by establishment
-    public List<ReportsData> findByESTABLISHMENT(int EstablishmentID) {
-        List<Reports> reportsestablishment = reportsRepository.findByESTABLISHMENT_EstablishmentID(EstablishmentID);
+    public List<ReportsData> findByEstablishment(int EstablishmentID) {
+        List<Reports> reportsestablishment = reportsRepository.findByestablishmentid(EstablishmentID);
         if (reportsestablishment.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There's no reports for this stablishment");
         }
         return reportsConverter.toData(reportsestablishment);
     }
 
+    // Calculate average values
+    public List<BigDecimal> getAverage(int EstablishmentID) {
+        List<Reports> reportsestablishment = reportsRepository.findByestablishmentid(EstablishmentID);
+        if (reportsestablishment.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There's no reports for this stablishment");
+        }
+        BigDecimal InternetAv = new BigDecimal(0.0);
+        BigDecimal EstablishmentAv = new BigDecimal(0.0);
+
+        for (Reports report : reportsestablishment) {
+            InternetAv = InternetAv.add(report.getInternetquality());
+            EstablishmentAv = EstablishmentAv.add(report.getScoreestablishment());
+        }
+        BigDecimal lenght = new BigDecimal(reportsestablishment.size());
+        InternetAv = InternetAv.divide(lenght, 1, RoundingMode.HALF_UP);
+        EstablishmentAv = EstablishmentAv.divide(lenght, 1, RoundingMode.HALF_UP);
+        List<BigDecimal> Averages = new ArrayList<BigDecimal>();
+        Averages.add(InternetAv);
+        Averages.add(EstablishmentAv);
+        return Averages;
+    }
+
     // Add a report
     public ReportsData insert(ReportsData report) {
-        if (reportsRepository.existsById(report.getReportID())) {
+        if (reportsRepository.existsById(report.getReportid())) {
             throw new ResponseStatusException(HttpStatus.NOT_MODIFIED, "Report already exists");
         }
         return reportsConverter.toData(reportsRepository.save(reportsConverter.toEntity(report)));
     }
 
-    // delete a report
+    // Delete a report
     public ReportsData deleteById(int id) {
         Optional<Reports> report = reportsRepository.findById(id);
         if (report.isEmpty()) {

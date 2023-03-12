@@ -9,14 +9,15 @@ public class ReportsConverter extends Converter<Reports, ReportsData> {
     public Reports toEntity(ReportsData object) {
         return object == null ? null
                 : Reports.builder()
-                        .ReportID(object.getReportID())
-                        .USER_UserID(object.getUSER_UserID())
-                        .ESTABLISHMENT_EstablishmentID(object.getESTABLISHMENT_EstablishmentID())
+                        .reportid(object.getReportid())
+                        .userid(object.getUserid())
+                        .establishmentid(object.getEstablishmentid())
                         .date(object.getDate())
-                        .ScoreEstablishment(object.getScoreEstablishment())
-                        .InternetQuality(object.getInternetQuality())
-                        .ScoreReport(object.getScoreReport())
-                        .CAPABILITY_capabilityID(object.getCAPABILITY_capabilityID())
+                        .scoreestablishment(object.getScoreestablishment())
+                        .internetquality(object.getInternetquality())
+                        .scorereport(object.getScorereport())
+                        .occupation(object.getOccupation())
+                        .review(object.getReview())
                         .build();
     }
 
@@ -24,14 +25,15 @@ public class ReportsConverter extends Converter<Reports, ReportsData> {
     public ReportsData toData(Reports object) {
         return object == null ? null
                 : ReportsData.builder()
-                        .ReportID(object.getReportID())
-                        .USER_UserID(object.getUSER_UserID())
-                        .ESTABLISHMENT_EstablishmentID(object.getESTABLISHMENT_EstablishmentID())
+                        .reportid(object.getReportid())
+                        .userid(object.getUserid())
+                        .establishmentid(object.getEstablishmentid())
                         .date(object.getDate())
-                        .ScoreEstablishment(object.getScoreEstablishment())
-                        .InternetQuality(object.getInternetQuality())
-                        .ScoreReport(object.getScoreReport())
-                        .CAPABILITY_capabilityID(object.getCAPABILITY_capabilityID())
+                        .scoreestablishment(object.getScoreestablishment())
+                        .internetquality(object.getInternetquality())
+                        .scorereport(object.getScorereport())
+                        .occupation(object.getOccupation())
+                        .review(object.getReview())
                         .build();
     }
 

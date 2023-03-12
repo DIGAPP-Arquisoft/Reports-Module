@@ -5,12 +5,9 @@ import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
@@ -29,31 +26,30 @@ public class Reports {
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int ReportID;
+    private int reportid;
 
     @Column(nullable = false)
-    private int USER_UserID;
+    private int userid;
 
     @Column(nullable = false)
-    private int ESTABLISHMENT_EstablishmentID;
+    private int establishmentid;
 
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date date;
 
     @Column(nullable = false, precision = 2, scale = 1)
-    private BigDecimal InternetQuality;
+    private BigDecimal internetquality;
 
     @Column(nullable = false, precision = 2, scale = 1)
-    private BigDecimal ScoreEstablishment;
+    private BigDecimal scoreestablishment;
+
+    @Column(nullable = true, precision = 2, scale = 1)
+    private BigDecimal scorereport;
+
+    @Column(nullable = true, length = 280)
+    private String review;
 
     @Column(nullable = false, precision = 2, scale = 1)
-    private BigDecimal ScoreReport;
-
-    @Column(nullable = false, length = 280)
-    private String Review;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(nullable = false)
-    private Capability CAPABILITY_capabilityID;
+    private BigDecimal occupation;
 }
