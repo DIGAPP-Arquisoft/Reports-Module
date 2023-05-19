@@ -1,0 +1,53 @@
+1. Create docker image for Mysql database
+docker pull mysql:5.7
+In case of you got an error, exeute the next command:
+docker pull --platform linux/x86_64 mysql:5.7
+2. Create network to communicate the Springboot aplication with the DB
+docker network create springboot-mysql-net
+
+docker run --name digapp_backend_reports_db --network springboot-mysql-net -e MYSQL_ROOT_PASSWORD=12345678 -e MYSQL_DATABASE=reportsdb -e MYSQL_USER=digapp -e MYSQL_PASSWORD=2023 -d mysql:5.7
+You can make test using:
+docker exec -it FISRT3IDCONTAINER bash
+mysql -uUSER -pPASSWORD
+show databases;
+use DATBASENAME;
+exit
+exit
+
+3. Change Application properties 
+spring.datasource.url = jdbc:mysql://digapp_backend_reports_db:3306/reportsdb
+spring.datasource.username = digapp
+spring.datasource.password = 2023
+spring.jpa.hibernate.ddl-auto = update
+
+spring.jpa.show-sql=true
+
+4. Comment on test DemoApplicationTests.java @Test
+
+5. Build the project to generate the JAR file, with maven use 
+mvn clean
+mvn package
+
+You will see and JAR generated file on target foler, in the main project folder create the dockerfile
+Dockerfile
+FROM openjdk:8
+
+COPY target/demo-0.0.1-SNAPSHOT.jar demo-0.0.1-SNAPSHOT.jar
+
+ENTRYPOINT ["java", "-jar", "/demo-0.0.1-SNAPSHOT.jar"]
+
+Create the image
+docker build -t digapp_backend_reports_ms
+
+6. Start the springboot container on the same network
+
+docker run --network springboot-mysql-net --name digapp_backend_reports_ms -p 8081:8080 -d digapp_backend_reports_ms
+
+7. Check if the deploynment was successfull
+
+check container
+docker ps
+docker logs FISRT3IDCONTAINER
+
+8. Do test on Postman
+localhost:8081/api/reports
