@@ -22,5 +22,4 @@ public class ReportsData {
     private BigDecimal scoreestablishment;
     private BigDecimal scorereport;
     private String review;
-    private BigDecimal occupation;
 }

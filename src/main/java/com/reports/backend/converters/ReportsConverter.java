@@ -16,7 +16,6 @@ public class ReportsConverter extends Converter<Reports, ReportsData> {
                         .scoreestablishment(object.getScoreestablishment())
                         .internetquality(object.getInternetquality())
                         .scorereport(object.getScorereport())
-                        .occupation(object.getOccupation())
                         .review(object.getReview())
                         .build();
     }
@@ -32,7 +31,6 @@ public class ReportsConverter extends Converter<Reports, ReportsData> {
                         .scoreestablishment(object.getScoreestablishment())
                         .internetquality(object.getInternetquality())
                         .scorereport(object.getScorereport())
-                        .occupation(object.getOccupation())
                         .review(object.getReview())
                         .build();
     }

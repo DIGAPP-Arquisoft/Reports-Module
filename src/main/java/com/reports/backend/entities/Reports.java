@@ -49,7 +49,4 @@ public class Reports {
 
     @Column(nullable = true, length = 280)
     private String review;
-
-    @Column(nullable = false, precision = 2, scale = 1)
-    private BigDecimal occupation;
 }

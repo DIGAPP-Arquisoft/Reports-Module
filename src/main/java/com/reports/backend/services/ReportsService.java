@@ -13,6 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.reports.backend.converters.ReportsConverter;
 import com.reports.backend.repositories.ReportsRepository;
+import com.reports.backend.data.AvData;
 import com.reports.backend.data.ReportsData;
 import com.reports.backend.entities.Reports;
 
@@ -47,10 +48,10 @@ public class ReportsService {
     }
 
     // Calculate average values
-    public List<BigDecimal> getAverage(int EstablishmentID) {
+    public AvData getAverage(int EstablishmentID) {
         List<Reports> reportsestablishment = reportsRepository.findByestablishmentid(EstablishmentID);
         if (reportsestablishment.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There's no reports for this stablishment");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There's no reports for this establishment");
         }
         BigDecimal InternetAv = new BigDecimal(0.0);
         BigDecimal EstablishmentAv = new BigDecimal(0.0);
@@ -62,10 +63,8 @@ public class ReportsService {
         BigDecimal lenght = new BigDecimal(reportsestablishment.size());
         InternetAv = InternetAv.divide(lenght, 1, RoundingMode.HALF_UP);
         EstablishmentAv = EstablishmentAv.divide(lenght, 1, RoundingMode.HALF_UP);
-        List<BigDecimal> Averages = new ArrayList<BigDecimal>();
-        Averages.add(InternetAv);
-        Averages.add(EstablishmentAv);
-        return Averages;
+        AvData averages = new AvData(InternetAv, EstablishmentAv);
+        return averages;
     }
 
     // Add a report
