@@ -37,11 +37,14 @@ COPY target/demo-0.0.1-SNAPSHOT.jar demo-0.0.1-SNAPSHOT.jar
 ENTRYPOINT ["java", "-jar", "/demo-0.0.1-SNAPSHOT.jar"]
 
 Create the image
-docker build -t digapp_backend_reports_ms
+docker build -t digapp_backend_reports_ms .
 
 6. Start the springboot container on the same network
 
-docker run --network springboot-mysql-net --name digapp_backend_reports_ms -p 8081:8080 -d digapp_backend_reports_ms
+
+docker build -t digapp_backend_reports_ms .
+
+sudo docker run -d -p 8081:8081 digapp_backend_reports_ms
 
 7. Check if the deploynment was successfull
 
@@ -51,3 +54,4 @@ docker logs FISRT3IDCONTAINER
 
 8. Do test on Postman
 localhost:8081/api/reports
+ 
