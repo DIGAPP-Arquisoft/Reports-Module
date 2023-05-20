@@ -25,26 +25,26 @@ public class ReportsService {
     private final ReportsConverter reportsConverter = new ReportsConverter();
 
     // List all reports
-    public List<ReportsData> findAll() {
-        return reportsConverter.toData(reportsRepository.findAll());
+    public List<Reports> findAll() {
+        return reportsRepository.findAll();
     }
 
     // List report by ID
-    public ReportsData findById(int ReportId) {
+    public Reports findById(int ReportId) {
         Optional<Reports> report = reportsRepository.findById(ReportId);
         if (report.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The report doesn't exists");
         }
-        return reportsConverter.toData(report.get());
+        return report.get();
     }
 
     // List reports by establishment
-    public List<ReportsData> findByEstablishment(int EstablishmentID) {
+    public List<Reports> findByEstablishment(int EstablishmentID) {
         List<Reports> reportsestablishment = reportsRepository.findByestablishmentid(EstablishmentID);
         if (reportsestablishment.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There's no reports for this stablishment");
         }
-        return reportsConverter.toData(reportsestablishment);
+        return reportsestablishment;
     }
 
     // Calculate average values
@@ -68,20 +68,20 @@ public class ReportsService {
     }
 
     // Add a report
-    public ReportsData insert(ReportsData report) {
+    public Reports insert(ReportsData report) {
         if (reportsRepository.existsById(report.getReportid())) {
             throw new ResponseStatusException(HttpStatus.NOT_MODIFIED, "Report already exists");
         }
-        return reportsConverter.toData(reportsRepository.save(reportsConverter.toEntity(report)));
+        return reportsRepository.save(reportsConverter.toEntity(report));
     }
 
     // Delete a report
-    public ReportsData deleteById(int id) {
+    public Reports deleteById(int id) {
         Optional<Reports> report = reportsRepository.findById(id);
         if (report.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "¡Report doesn't exists!");
         }
         reportsRepository.deleteById(id);
-        return reportsConverter.toData(report.get());
+        return report.get();
     }
 }
