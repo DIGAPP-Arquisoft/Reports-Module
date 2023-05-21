@@ -3,8 +3,6 @@ package com.reports.backend.entities;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
@@ -31,16 +29,13 @@ public class Reports {
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private int reportid;
 
     @Column(nullable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
-    private int userid;
+    private String userid;
 
     @Column(nullable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
-    private int establishmentid;
+    private String establishmentid;
 
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)

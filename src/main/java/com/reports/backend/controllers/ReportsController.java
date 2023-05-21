@@ -37,13 +37,13 @@ public class ReportsController {
 
     // Get reports by ID establishment
     @GetMapping("/e/{EstablishmentID}")
-    public ResponseEntity<?> findByEstablishment(@PathVariable int EstablishmentID) {
+    public ResponseEntity<?> findByEstablishment(@PathVariable String EstablishmentID) {
         return new ResponseEntity<>(reportservice.findByEstablishment(EstablishmentID), HttpStatus.OK);
     }
 
     // Get Averages
     @GetMapping("/a/{EstablishmentID}")
-    public ResponseEntity<?> getAverages(@PathVariable int EstablishmentID) {
+    public ResponseEntity<?> getAverages(@PathVariable String EstablishmentID) {
         return new ResponseEntity<>(reportservice.getAverage(EstablishmentID), HttpStatus.OK);
     }
 

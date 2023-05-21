@@ -15,8 +15,8 @@ import lombok.Setter;
 @Builder
 public class ReportsData {
     private int reportid;
-    private int userid;
-    private int establishmentid;
+    private String userid;
+    private String establishmentid;
     private Date date;
     private BigDecimal internetquality;
     private BigDecimal scoreestablishment;

@@ -2,7 +2,6 @@ package com.reports.backend.services;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,7 +38,7 @@ public class ReportsService {
     }
 
     // List reports by establishment
-    public List<Reports> findByEstablishment(int EstablishmentID) {
+    public List<Reports> findByEstablishment(String EstablishmentID) {
         List<Reports> reportsestablishment = reportsRepository.findByestablishmentid(EstablishmentID);
         if (reportsestablishment.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There's no reports for this stablishment");
@@ -48,7 +47,7 @@ public class ReportsService {
     }
 
     // Calculate average values
-    public AvData getAverage(int EstablishmentID) {
+    public AvData getAverage(String EstablishmentID) {
         List<Reports> reportsestablishment = reportsRepository.findByestablishmentid(EstablishmentID);
         if (reportsestablishment.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There's no reports for this establishment");

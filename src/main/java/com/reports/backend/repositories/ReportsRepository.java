@@ -10,5 +10,5 @@ import com.reports.backend.entities.Reports;
 @Repository
 public interface ReportsRepository extends JpaRepository<Reports, Integer> {
 
-    List<Reports> findByestablishmentid(int EstablishmentID);
+    List<Reports> findByestablishmentid(String EstablishmentID);
 }

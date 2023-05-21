@@ -44,7 +44,7 @@ docker build -t digapp_backend_reports_ms .
 
 docker build -t digapp_backend_reports_ms .
 
-sudo docker run -d -p 8081:8081 digapp_backend_reports_ms
+sudo docker run --name digapp_backend_reports_ms -d -p 8081:8081 digapp_backend_reports_ms
 
 7. Check if the deploynment was successfull
 
