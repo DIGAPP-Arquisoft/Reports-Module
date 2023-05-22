@@ -37,9 +37,8 @@ public class Reports {
     @Column(nullable = false)
     private String establishmentid;
 
-    @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date date;
+    @Column(nullable = false, length = 30)
+    private String date;
 
     @Column(nullable = false, precision = 2, scale = 1)
     private BigDecimal internetquality;

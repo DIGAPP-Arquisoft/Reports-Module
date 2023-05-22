@@ -1,7 +1,6 @@
 package com.reports.backend.data;
 
 import java.math.BigDecimal;
-import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,7 +16,7 @@ public class ReportsData {
     private int reportid;
     private String userid;
     private String establishmentid;
-    private Date date;
+    private String date;
     private BigDecimal internetquality;
     private BigDecimal scoreestablishment;
     private BigDecimal scorereport;
