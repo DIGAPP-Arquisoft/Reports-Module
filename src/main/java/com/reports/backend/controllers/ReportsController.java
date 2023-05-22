@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.reports.backend.services.ReportsService;
+import com.reports.backend.data.AvData;
 import com.reports.backend.data.ReportsData;
+import com.reports.backend.entities.Reports;
 
 @RestController
 @RequestMapping(path = "/api/reports")
@@ -32,7 +34,12 @@ public class ReportsController {
     // Get report by ID
     @GetMapping("{id}")
     public ResponseEntity<?> findById(@PathVariable int id) {
-        return new ResponseEntity<>(reportservice.findById(id), HttpStatus.OK);
+        Reports report = reportservice.findById(id);
+        if (report == null) {
+            return new ResponseEntity<>(new Reports[] {}, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(report, HttpStatus.OK);
+        }
     }
 
     // Get reports by ID establishment
@@ -44,7 +51,12 @@ public class ReportsController {
     // Get Averages
     @GetMapping("/a/{EstablishmentID}")
     public ResponseEntity<?> getAverages(@PathVariable String EstablishmentID) {
-        return new ResponseEntity<>(reportservice.getAverage(EstablishmentID), HttpStatus.OK);
+        AvData averages = reportservice.getAverage(EstablishmentID);
+        if (averages == null) {
+            return new ResponseEntity<>(new AvData[] {}, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(averages, HttpStatus.OK);
+        }
     }
 
     // Add report
