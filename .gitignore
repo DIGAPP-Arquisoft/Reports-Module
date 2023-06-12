@@ -1,7 +1,6 @@
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
 !**/src/test/**/target/
 
 ### Java ###
@@ -18,7 +17,6 @@ target/
 .mtj.tmp/
 
 # Package Files #
-# *.jar
 *.war
 *.nar
 *.ear
