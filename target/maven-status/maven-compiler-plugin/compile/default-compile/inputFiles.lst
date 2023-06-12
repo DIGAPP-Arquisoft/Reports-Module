@@ -1,0 +1,10 @@
+/mnt/d/Sebastian/Documents/GitHub/Reports-Module/src/main/java/com/reports/backend/converters/ReportsConverter.java
+/mnt/d/Sebastian/Documents/GitHub/Reports-Module/src/main/java/com/reports/backend/services/ReportsService.java
+/mnt/d/Sebastian/Documents/GitHub/Reports-Module/src/main/java/com/reports/backend/data/AvData.java
+/mnt/d/Sebastian/Documents/GitHub/Reports-Module/src/main/java/com/reports/backend/entities/Reports.java
+/mnt/d/Sebastian/Documents/GitHub/Reports-Module/src/main/java/com/reports/backend/controllers/ReportsController.java
+/mnt/d/Sebastian/Documents/GitHub/Reports-Module/src/main/java/com/reports/backend/ReportsApplication.java
+/mnt/d/Sebastian/Documents/GitHub/Reports-Module/src/main/java/com/reports/backend/converters/Converter.java
+/mnt/d/Sebastian/Documents/GitHub/Reports-Module/src/main/java/com/reports/backend/data/ReportsData.java
+/mnt/d/Sebastian/Documents/GitHub/Reports-Module/src/main/java/com/reports/backend/repositories/ReportsRepository.java
+/mnt/d/Sebastian/Documents/GitHub/Reports-Module/src/main/java/com/reports/backend/ServletInitializer.java

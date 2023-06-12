@@ -1,0 +1,13 @@
+com/reports/backend/data/ReportsData$ReportsDataBuilder.class
+com/reports/backend/entities/Reports$ReportsBuilder.class
+com/reports/backend/services/ReportsService.class
+com/reports/backend/data/ReportsData.class
+com/reports/backend/data/AvData.class
+com/reports/backend/converters/ReportsConverter.class
+com/reports/backend/ServletInitializer.class
+com/reports/backend/entities/Reports.class
+com/reports/backend/repositories/ReportsRepository.class
+com/reports/backend/controllers/ReportsController.class
+com/reports/backend/data/AvData$AvDataBuilder.class
+com/reports/backend/ReportsApplication.class
+com/reports/backend/converters/Converter.class
