@@ -6,9 +6,9 @@ spring.jpa.hibernate.ddl-auto = update
 
 spring.jpa.show-sql=true
 
-4. Comment on test DemoApplicationTests.java @Test
+2. Comment on test DemoApplicationTests.java @Test
 
-5. Build the project to generate the JAR file, with maven use 
+3. Build the project to generate the JAR file, with maven use 
 mvn clean
 mvn package
 
@@ -23,7 +23,7 @@ ENTRYPOINT ["java", "-jar", "/demo-0.0.1-SNAPSHOT.jar"]
 Create the image
 docker build -t digapp_backend_reports_ms .
 
-6. Start the springboot container on the same network
+4. Start the springboot container on the same network
 
 
 docker build -t digapp_backend_reports_ms .
